@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>GitHub Profile Finder</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<main class="app">
+			<section class="card">
+				<header class="card__header">
+					<div class="brand">
+						<span class="brand__dot"></span>
+						<div>
+							<h1>GitHub Profile Finder</h1>
+							<p>Find developers, check stats, and explore recent work.</p>
+						</div>
+					</div>
+					<button id="themeToggle" class="toggle" type="button" aria-pressed="false">
+						<span class="toggle__icon">◐</span>
+						<span class="toggle__text">Light</span>
+					</button>
+				</header>
+
+				<form id="searchForm" class="search" autocomplete="off">
+					<div class="search__field">
+						<input
+							id="searchInput"
+							type="text"
+							name="username"
+							placeholder="Enter GitHub username..."
+							aria-label="GitHub username"
+						/>
+						<span class="search__hint">Try: torvalds, gaearon, sindresorhus</span>
+					</div>
+					<button class="btn" type="submit">Search</button>
+				</form>
+
+				<div class="history" id="history"></div>
+
+				<div id="status" class="status" role="status" aria-live="polite"></div>
+
+				<div id="loader" class="loader" aria-hidden="true">
+					<div class="spinner"></div>
+					<span>Loading profile...</span>
+				</div>
+
+				<section id="profile" class="profile card-surface is-loading" aria-live="polite">
+					<div class="profile__main">
+						<div class="avatar skeleton" id="avatar"></div>
+						<div class="profile__identity">
+							<h2 class="skeleton" id="name">Loading name</h2>
+							<p class="mono skeleton" id="username">@username</p>
+							<p class="profile__bio skeleton" id="bio">Loading bio...</p>
+						</div>
+					</div>
+
+					<div class="stats">
+						<div class="stat">
+							<span class="stat__label">Followers</span>
+							<span class="stat__value skeleton" id="followers">0</span>
+						</div>
+						<div class="stat">
+							<span class="stat__label">Following</span>
+							<span class="stat__value skeleton" id="following">0</span>
+						</div>
+						<div class="stat">
+							<span class="stat__label">Repos</span>
+							<span class="stat__value skeleton" id="repos">0</span>
+						</div>
+					</div>
+
+					<div class="details">
+						<div class="detail">
+							<span class="detail__label">Location</span>
+							<span class="detail__value skeleton" id="location">-</span>
+						</div>
+						<div class="detail">
+							<span class="detail__label">Website</span>
+							<a class="detail__value skeleton" id="blog" href="#" target="_blank" rel="noreferrer">
+								-
+							</a>
+						</div>
+						<div class="detail">
+							<span class="detail__label">Joined</span>
+							<span class="detail__value skeleton" id="created">-</span>
+						</div>
+					</div>
+
+					<div class="actions">
+						<a id="profileLink" class="btn btn--ghost" href="#" target="_blank" rel="noreferrer">
+							View on GitHub
+						</a>
+					</div>
+				</section>
+
+				<section id="reposSection" class="repos card-surface is-loading">
+					<div class="repos__header">
+						<h3>Latest Repositories</h3>
+						<span class="repos__stars">Total stars: <strong id="totalStars">0</strong></span>
+					</div>
+					<div id="repoList" class="repo-list"></div>
+				</section>
+			</section>
+		</main>
+
+		<script src="script.js"></script>
+	</body>
+</html>
